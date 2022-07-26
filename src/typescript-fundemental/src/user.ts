@@ -1,5 +1,5 @@
 const user = {
-    name: 'Migni',
-    age: 26
+    name: 'Jinuk',
+    age: 24
 };
 export default user;
