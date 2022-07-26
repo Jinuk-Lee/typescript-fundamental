@@ -1,5 +1,9 @@
 export class Person implements IPerson {
+
+    static numberOfPerson: number = 0;
+
     constructor(public name: string, public age: number) {
+        Person.numberOfPerson++;
         this.name = name;
         this.age = age;
     }
