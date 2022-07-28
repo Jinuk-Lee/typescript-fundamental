@@ -5,6 +5,9 @@ import {parseNumber} from "./parse-number";
 import {mergeObjects} from "./merge-objects";
 import {ICircle, IRectangle, ISquare} from "./shape";
 import {calculatorArea} from "./calculator-area";
+import Fish from "./fish";
+import {flyOrSwim} from "./fly-or-swim";
+import Bird from "./bird";
 
 try {
     //에러가 발생하는 부분
@@ -50,3 +53,9 @@ console.log(
     calculatorArea(circle),
     calculatorArea(rectangle)
 )
+
+const bird:Bird = new Bird;
+const fish:Fish = new Fish;
+
+flyOrSwim(bird);
+flyOrSwim(fish);
