@@ -9,6 +9,7 @@ import Fish from "./fish";
 import {flyOrSwim} from "./fly-or-swim";
 import Bird from "./bird";
 import {readFile, readFileSync} from "fs";
+import {readFilePromise} from "./read-file.promise";
 //
 //
 // try {
@@ -62,15 +63,30 @@ import {readFile, readFileSync} from "fs";
 // flyOrSwim(bird);
 // flyOrSwim(fish);
 
-console.log('파일을 동기식으로 읽는 중..');
-const buffer: Buffer = readFileSync('./package.json');
-console.log(buffer.toString());
+//
+// console.log('파일을 비동기식으로 읽는 중..');
+// readFile('./package.json', (error: Error, buffer: Buffer) => {
+//     if (error) {
+//         console.log(error);
+//     } else {
+//         console.log(buffer.toString());
+//     }
+// });
+// console.log('파일을 동기식으로 읽는 중..');
+// const buffer: Buffer = readFileSync('./package.json');
+// console.log(buffer.toString());
 
-console.log('파일을 비동기식으로 읽는 중..');
-readFile('./package.json', (error: Error, buffer: Buffer) =>{
-    if (error){
+readFilePromise('./package.json')
+    //패키지를 읽고 성공하면 출력하고 그다음 ts를 읽어서 성공했으면 출력
+    .then((value: string) => {
+        console.log(value);
+        throw new Error('Hello error');
+        return readFilePromise('./tsconfig.json');
+    })
+    .then((value: string) => {
+        console.log('print tsconfig.json');
+        console.log(value);
+    })
+    .catch((error) => {
         console.log(error);
-    }else{
-        console.log(buffer.toString());
-    }
-});
+    });
