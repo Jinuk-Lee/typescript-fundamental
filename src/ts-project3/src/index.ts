@@ -9,7 +9,7 @@ import Fish from "./fish";
 import {flyOrSwim} from "./fly-or-swim";
 import Bird from "./bird";
 import {read, readFile, readFileSync} from "fs";
-import {readFilePromise} from "./read-file.promise";
+import {readFilePromise} from "../../synchronous-and-blocking/src/read-file.promise";
 //
 //
 // try {
